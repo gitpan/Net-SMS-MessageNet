@@ -1,6 +1,10 @@
 CHANGES
 -------
 
+  0.64 - 24 March 2005
+
+	* Added Net::SSL, Crypt::SSLeay as a pre-req to help testers.cpan.org
+
   0.63 - 23 March 2005
 
 	* Removed some debugging code 

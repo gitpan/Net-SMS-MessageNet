@@ -10,5 +10,7 @@ WriteMakefile(
 				'HTTP::Cookies' => 0,
 				'URI::Escape' => 0,
 				'Net::HTTPS' => 0,
+				'Net::SSL' => 0,
+				'Crypt::SSLeay' => 0,
                                         },
 );

@@ -6,7 +6,7 @@ use HTTP::Cookies();
 use URI::Escape();
 use warnings;
 use strict;
-our ($VERSION) = '0.63';
+our ($VERSION) = '0.64';
 our (@ISA) = qw(Exporter);
 our (@EXPORT) = qw(send_sms);
 
