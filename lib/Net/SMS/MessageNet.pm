@@ -6,7 +6,7 @@ use HTTP::Cookies();
 use URI::Escape();
 use warnings;
 use strict;
-our ($VERSION) = '0.62';
+our ($VERSION) = '0.63';
 our (@ISA) = qw(Exporter);
 our (@EXPORT) = qw(send_sms);
 
@@ -96,7 +96,6 @@ sub send {
 		die("Failed to get a successful response from sms attempt\n");
 	}
 	my ($response_as_string) = $response->as_string();
-	print $response_as_string;
 	if ($response_as_string =~ /<string[^>]+>([^<]+)<\/string>/) {
 		my ($actual_message) = $1;
 		if ($actual_message eq 'Message sent successfully.') {
