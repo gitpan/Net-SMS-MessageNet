@@ -9,5 +9,6 @@ WriteMakefile(
 				'LWP' => 0,
 				'HTTP::Cookies' => 0,
 				'URI::Escape' => 0,
+				'Net::HTTPS' => 0,
                                         },
 );

@@ -10,7 +10,7 @@ Net::SMS::MessageNet - Send SMS messages via the messagenet.com.au service
 
 =head1 DESCRIPTION
 
-This module allows sending sms messages via the messagenet.com.au service
+This module allows sending sms messages via https to the messagenet.com.au service
 
 =head1 Functions
 
@@ -38,7 +38,7 @@ David Dick <ddick@cpan.org>
 
 =head1 PREREQUISITES
 
-Uses B<LWP>, B<HTTP::Cookies> and B<URI::Escape> modules.
+Uses B<LWP>, B<HTTP::Cookies>, B<Net::HTTPS> and B<URI::Escape> modules.
 
 =head1 BUGS
 

@@ -3,4 +3,5 @@ Makefile.PL
 t/test.t
 lib/Net/SMS/MessageNet.pm
 lib/Net/SMS/MessageNet.pod
+Changes
 META.yml                                 Module meta-data (added by MakeMaker)

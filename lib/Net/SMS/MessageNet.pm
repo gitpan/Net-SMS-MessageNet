@@ -6,7 +6,7 @@ use HTTP::Cookies();
 use URI::Escape();
 use warnings;
 use strict;
-our ($VERSION) = '0.61';
+our ($VERSION) = '0.62';
 our (@ISA) = qw(Exporter);
 our (@EXPORT) = qw(send_sms);
 
@@ -60,7 +60,22 @@ sub send {
 	unless ($phone_number =~ /^\d+$/) {
 		die("Phone number must be all numbers.  The country code should be included\n");
 	}
-	my ($url) = 'http://www.messagenet.com.au/dotnet/Lodge.asmx/LodgeSMSMessage';
+	my ($url);
+	eval { require Net::HTTPS; };
+	if ($@) {
+		if ($^W) {
+			warn("Using insecure means to send sms to messagenet.com.au\n");
+		}
+		$url = 'http://www.messagenet.com.au/dotnet/Lodge.asmx/LodgeSMSMessage';
+	} else {
+		unless (defined $ENV{HTTPS_VERSION}) {
+			$ENV{HTTPS_VERSION} = '3';
+		}
+		unless (defined $ENV{HTTPS_CA_DIR}) {
+			$ENV{HTTPS_CA_DIR} = 'certs';
+		}
+		$url = 'https://www.messagenet.com.au/dotnet/Lodge.asmx/LodgeSMSMessage';
+	}
 	my ($request) = new HTTP::Request('POST' => $url);
 	$request->content_type('application/x-www-form-urlencoded');
 	my ($ua) = $self->{_ua};
@@ -81,6 +96,7 @@ sub send {
 		die("Failed to get a successful response from sms attempt\n");
 	}
 	my ($response_as_string) = $response->as_string();
+	print $response_as_string;
 	if ($response_as_string =~ /<string[^>]+>([^<]+)<\/string>/) {
 		my ($actual_message) = $1;
 		if ($actual_message eq 'Message sent successfully.') {

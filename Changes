@@ -1,0 +1,6 @@
+CHANGES
+-------
+
+  0.62 - 23 March 2005
+
+	* Altered the module to use the https api, including verifying peer certificate
