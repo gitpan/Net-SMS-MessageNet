@@ -1,12 +1,11 @@
 package Net::SMS::MessageNet;
 
-use Exporter qw(import);
 use LWP();
 use HTTP::Cookies();
 use URI::Escape();
 use warnings;
 use strict;
-our ($VERSION) = '0.64';
+our ($VERSION) = '0.65';
 our (@ISA) = qw(Exporter);
 our (@EXPORT) = qw(send_sms);
 
